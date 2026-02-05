@@ -42,17 +42,17 @@ public class BonusServiceTest {
         // подготавливаем данные:
         long amount = 1000;
         boolean registered = false;
-        long expected = 30;
+        long expected = 10;
         long actual = service.calculate(amount, registered);
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void shouldCalculateForWrongExpected() {
+    void shouldCalculateForUnregistereSmallAmount() {
         BonusService service = new BonusService();
-        long amount = 1_000_000;
-        boolean registered = true;
-        long expected = 100;
+        long amount = 50;
+        boolean registered = false;
+        long expected = 0;
 
         long actual = service.calculate(amount, registered);
         Assertions.assertEquals(expected, actual);
